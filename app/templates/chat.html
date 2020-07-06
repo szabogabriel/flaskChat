@@ -1,0 +1,42 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}This is an example page{% endblock %}
+
+{% block navbar %}
+<div class="navbar navbar-default container">
+	<div class="container-fluid">
+		<div class="collapse navbar-collapse" id="bs-example-collapse-1">
+			<ul class="nav navbar-nav">
+				<li>
+					<a class="navbar-brand" href="/index">Chat</a>
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a class="nav-link" href="settings">Settings</a>
+				</li>
+				<li>
+					<a class="nav-link" href="logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block content %}
+	<div class="container">
+
+	{% if message %}
+		<div class="overflow-auto" id='messages'>
+			{% autoescape false %}
+				{{ message }}
+			{% endautoescape %}
+		</div>
+	{% endif %}
+
+	<form method="POST" action="message">
+		<input class="active col-sm-11" type="text" id='mes' name='mes'/>
+		<input type="submit" class="button col-sm-1"  value="Send"/>
+	</form>
+	</div>
+{% endblock %}
